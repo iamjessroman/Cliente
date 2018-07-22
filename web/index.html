@@ -11,7 +11,11 @@
     <title></title>
   </head>
 
-  <body> <button id="btna" onclick="draw();">Cortar</button> <button id="btnb" onclick="copy();">Copiar</button> <canvas id=a></canvas> <canvas id=b></canvas>
+  <body>
+    <button id="btna" onclick="draw();">Cortar</button>
+    <button id="btnb" onclick="copy();">Copiar</button>
+    <canvas id=a></canvas>
+    <canvas id=b></canvas>
     <script>
     var num = 0;
     var a = new fabric.Canvas('a');
@@ -185,7 +189,6 @@
       var imgData = ctx1.getImageData(0, 0, width, height);
       ctx2.putImageData(imgData, 10, 10);
     }
-
     </script>
   </body>
 
