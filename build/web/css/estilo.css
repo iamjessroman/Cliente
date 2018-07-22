@@ -1,0 +1,71 @@
+#btna {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#space-canvas {
+    width: 1024px;
+    height: 768px;
+    background-color: grey;
+    margin: 50px;
+}
+#currentImage {
+    max-width: 800px;
+    max-height: 600px;
+    display: none;
+}
+.tools-imgEditor {
+    display: block;
+    top: 25px;
+    left: 50px;
+    background: #444;
+    height: 40px;
+    min-width: 40px;
+    max-width: 270px;
+    z-index: 99;
+    border-radius: 2px;
+    white-space: nowrap;
+    padding: 8px 6px 0 6px;
+}
+.tools-imgEditor:before {
+    content: "";
+
+    bottom: -7px;
+    left: 40px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #444;
+}
+.tools-imgEditor .fa {
+    padding: 0 5px;
+    color: white;
+    cursor: pointer;
+}
+.tools-imgEditor .fa.selected {
+    color: lightgrey;
+}
+.tools-imgEditor .fa[onclick="startCrop()"] {
+    color: #33b5e5;
+}
+.tools-imgEditor .fa[onclick="applyCrop()"] {
+    color: #99cc00;
+}
+.tools-imgEditor .fa[onclick="cancelCrop()"], .tools-imgEditor .addElement {
+    color: #ff4444;
+}
+.tools-imgEditor .fa-trash-o, .tools-imgEditor .fa-check-square-o, .tools-imgEditor .fa-floppy-o {
+    display: none;
+}
+.canvas-container {
+    background-image: url(../images/background.png);
+    background-size: 16px 16px;
+    width: 500px;
+}
