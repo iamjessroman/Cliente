@@ -1,71 +1,301 @@
+#guidat {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+  z-index: 1001;
+  text-align: right;
+}
+
+.guidat {
+  color: #fff;
+  opacity: 0.97;
+  text-align: left;
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.guidat, .guidat input {
+  font: 9.5px Lucida Grande, sans-serif;
+}
+
+.guidat-controllers {
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+a.guidat-toggle:link, a.guidat-toggle:visited, a.guidat-toggle:active {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  background-color: #222;
+  text-align: center;
+  display: block;
+  padding: 5px;
+}
+
+a.guidat-toggle:hover {
+  background-color: #000;
+}
+
+.guidat-controller {
+  padding: 3px;
+  height: 25px;
+  clear: left;
+  border-bottom: 1px solid #222;
+  background-color: #111;
+}
+
+.guidat-controller, .guidat-controller input, .guidat-slider-bg, .guidat-slider-fg {
+  -moz-transition: background-color 0.15s linear;
+  -webkit-transition: background-color 0.15s linear;
+  transition: background-color 0.15s linear;
+}
+
+.guidat-controller.boolean:hover, .guidat-controller.function:hover {
+  background-color: #000;
+}
+
+.guidat-controller input {
+  float: right;
+  outline: none;
+  border: 0;
+  padding: 4px;
+  margin-top: 2px;
+  background-color: #222;
+}
+
+.guidat-controller select {
+  margin-top: 4px;
+  float: right;
+}
+
+.guidat-controller input:hover {
+  background-color: #444;
+}
+
+.guidat-controller input:focus, .guidat-controller.active input {
+  background-color: #555;
+  color: #fff;
+}
+
+.guidat-controller.number {
+  border-left: 5px solid #00aeff;
+}
+
+.guidat-controller.string {
+  border-left: 5px solid #1ed36f;
+}
+
+.guidat-controller.string input {
+  border: 0;
+  color: #1ed36f;
+  margin-right: 2px;
+  width: 148px;
+}
+
+.guidat-controller.boolean {
+  border-left: 5px solid #54396e;
+}
+
+.guidat-controller.function {
+  border-left: 5px solid #e61d5f;
+}
+
+.guidat-controller.number input[type=text] {
+  width: 35px;
+  margin-left: 5px;
+  margin-right: 2px;
+  color: #00aeff;
+}
+
+.guidat .guidat-controller.boolean input {
+  margin-top: 6px;
+  margin-right: 2px;
+  font-size: 20px;
+}
+
+.guidat-controller:last-child {
+  border-bottom: none;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.guidat-propertyname {
+  padding: 5px;
+  padding-top: 7px;
+  cursor: default;
+  display: inline-block;
+}
+
+.guidat-controller .guidat-slider-bg:hover, .guidat-controller.active .guidat-slider-bg {
+  background-color: #444;
+}
+
+.guidat-controller .guidat-slider-bg .guidat-slider-fg:hover, .guidat-controller.active .guidat-slider-bg .guidat-slider-fg {
+  background-color: #52c8ff;
+}
+
+.guidat-slider-bg {
+  background-color: #222;
+  cursor: ew-resize;
+  width: 40%;
+  margin-top: 2px;
+  float: right;
+  height: 21px;
+}
+
+.guidat-slider-fg {
+  cursor: ew-resize;
+  background-color: #00aeff;
+  height: 21px;
+}
+
+body, html, h3, p, canvas, ul, li, select {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  font-size: 13px;
+  padding: 16px;
+}
+
+#form {
+  overflow: hidden;
+  background: #F1F1F1;
+  padding: 8px 16px;
+}
+
+#form #form_url {
+  margin-left: 8px;
+  width: 340px;
+}
+
+#wrapper {
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+#side {
+  float: left;
+  width: 230px;
+}
+
+#support {
+  margin-top: 8px;
+}
+
+#main {
+  float: left;
+}
+
+#timer {
+  text-align: right;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 4px 0;
+}
+
+canvas {
+  margin: 3px 0;
+}
+
+ul {
+  list-style: none;
+  padding: 4px;
+}
+
+li {
+  padding: 1px 0;
+}
+
 #btna {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 #space-canvas {
-    width: 1024px;
-    height: 768px;
-    background-color: grey;
-    margin: 50px;
+  width: 1024px;
+  height: 768px;
+  background-color: grey;
+  margin: 50px;
 }
-#currentImage {
-    max-width: 800px;
-    max-height: 600px;
-    display: none;
-}
-.tools-imgEditor {
-    display: block;
-    top: 25px;
-    left: 50px;
-    background: #444;
-    height: 40px;
-    min-width: 40px;
-    max-width: 270px;
-    z-index: 99;
-    border-radius: 2px;
-    white-space: nowrap;
-    padding: 8px 6px 0 6px;
-}
-.tools-imgEditor:before {
-    content: "";
 
-    bottom: -7px;
-    left: 40px;
-    width: 0;
-    height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 7px solid #444;
+#currentImage {
+  max-width: 800px;
+  max-height: 600px;
+  display: none;
 }
+
+.tools-imgEditor {
+  display: block;
+  top: 25px;
+  left: 50px;
+  background: #444;
+  height: 40px;
+  min-width: 40px;
+  max-width: 270px;
+  z-index: 99;
+  border-radius: 2px;
+  white-space: nowrap;
+  padding: 8px 6px 0 6px;
+}
+
+.tools-imgEditor:before {
+  content: "";
+  bottom: -7px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #444;
+}
+
 .tools-imgEditor .fa {
-    padding: 0 5px;
-    color: white;
-    cursor: pointer;
+  padding: 0 5px;
+  color: white;
+  cursor: pointer;
 }
+
 .tools-imgEditor .fa.selected {
-    color: lightgrey;
+  color: lightgrey;
 }
+
 .tools-imgEditor .fa[onclick="startCrop()"] {
-    color: #33b5e5;
+  color: #33b5e5;
 }
+
 .tools-imgEditor .fa[onclick="applyCrop()"] {
-    color: #99cc00;
+  color: #99cc00;
 }
+
 .tools-imgEditor .fa[onclick="cancelCrop()"], .tools-imgEditor .addElement {
-    color: #ff4444;
+  color: #ff4444;
 }
+
 .tools-imgEditor .fa-trash-o, .tools-imgEditor .fa-check-square-o, .tools-imgEditor .fa-floppy-o {
-    display: none;
+  display: none;
 }
+
 .canvas-container {
-    background-image: url(../images/background.png);
-    background-size: 16px 16px;
-    width: 500px;
+  background-image: url(../images/background.png);
+  background-size: 16px 16px;
+  width: 500px;
 }
