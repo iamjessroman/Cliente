@@ -12,8 +12,9 @@
   </head>
 
   <body>
+    <a id="downloadAnchorElem" style="display:none"></a>
     <button id="btna" onclick="draw();">Cortar</button>
-    <button id="btnb" onclick="copy();">Copiar</button>
+    <button onclick="saveimages();">Save</button>
     <canvas id=a></canvas>
     <div id="config">
       <h3>Filters</h3>
@@ -990,6 +991,22 @@
       var imgData = ctx1.getImageData(0, 0, 300, 300);
       ctx2.putImageData(imgData, 10, 10);
       i = num;
+    }
+
+    function saveimages() {
+      for (var i = 0; i < num; i++) {
+        var canvas = document.getElementById(i);
+        var link = document.createElement('a');
+        link.download = i + ".png";
+        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+        link.click();
+
+        var href = "data:application/octet-stream," + encodeURIComponent(JSON.stringify(a));
+        var dlAnchorElem = document.getElementById('downloadAnchorElem');
+        dlAnchorElem.setAttribute("href", href);
+        dlAnchorElem.setAttribute("download", i + ".json");
+        dlAnchorElem.click();
+      }
     }
     </script>
   </body>
