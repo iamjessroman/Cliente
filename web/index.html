@@ -772,9 +772,7 @@
       }, 20);
 
       // load default image
-      loadImage('rotator_s.jpg', function() {
-        initFilter(current_filter);
-      });
+
     });
     </script>
     <canvas id=b></canvas>
@@ -950,6 +948,10 @@
       ctx2.clearRect(0, 0, c2.width, c2.height);
       var imgData = ctx1.getImageData(0, 0, width, height);
       ctx2.putImageData(imgData, 10, 10);
+      var url = c2.toDataURL();
+      loadImage(url, function() {
+        initFilter(current_filter);
+      });
     }
     </script>
   </body>
