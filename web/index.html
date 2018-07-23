@@ -57,25 +57,18 @@
         <button id="boton" onclick="add()">Añadir</button>
       </div>
     </div>
-    <!--/config-->
-    <div id="main">
-      <div id="result">
-        <h3>Output</h3>
-        <canvas id="output"></canvas>
-        <p id="timer"></p>
-      </div>
-      <!--/result-->
-    </div>
-    <!--/main-->
-    </div>
-    <!--/wrapper-->
-    </div>
-    <!--/container-->
-    <canvas id=b></canvas>
+    <h3>Output</h3>
+    <canvas id="output"></canvas>
+    <p id="timer"></p>
+    <canvas id="b"></canvas>
+    <button id="canvasImageSave" onclick="savecanvas()">Save</button>
+    <!-- Save button -->
     <script src="./js/jquery-1.6.min.js"></script>
     <script src="./js/DAT.GUI.js"></script>
     <script src="./js/imagefilters.js"></script>
     <script>
+    var i = 0;
+
     function trace() {
       try {
         console.log.apply(console, arguments);
@@ -957,23 +950,21 @@
       var url = c2.toDataURL();
       loadImage(url, function() {
         initFilter(current_filter);
-      }); <<
-      << << < HEAD
+      });
+      i = num;
     }
 
     function add() {
+
       if ($("#nombre").val() == "Sepia" && $("#text").val() !== "") {
-        alert($("#text").val());
         document.getElementById('Sepia').style.display = 'block'
-      }
-
-      if ($("#nombre").val() == "Gaussian" && $("#text").val() !== "1") {
+      } else if ($("#nombre").val() == "Gaussian" && $("#text").val() !== "") {
         document.getElementById('Gaussian').style.display = 'block'
-      }
-      if ($("#nombre").val() == "Oil" && $("#text").val() !== "1") {
+      } else if ($("#nombre").val() == "Oil" && $("#text").val() !== "") {
         document.getElementById('Oil').style.display = 'block'
+      } else {
+        alert("Código Incorrecto");
       }
-
 
     }
 
@@ -983,6 +974,22 @@
       } else {
         document.getElementById('divfilter').style.display = 'block'
       };
+    }
+
+    function savecanvas() {
+      //   var canvas = document.getElementById("b");
+      //   var link = document.createElement('a');
+      //   link.download = "test.png";
+      //   link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+      //   link.click();
+      var c1 = document.getElementById("output");
+      var c2 = document.getElementById(i);
+      var ctx1 = c1.getContext("2d");
+      var ctx2 = c2.getContext("2d");
+      ctx2.clearRect(0, 0, c2.width, c2.height);
+      var imgData = ctx1.getImageData(0, 0, 300, 300);
+      ctx2.putImageData(imgData, 10, 10);
+      i = num;
     }
     </script>
   </body>
