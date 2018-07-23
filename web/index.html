@@ -20,9 +20,9 @@
       <select id="filter_list" size="2">
     <option value="Original">Original</option>
     <option value="Binarize">Binarize</option>
-    <option value="BoxBlur">BoxBlur</option>
-    <option value="GaussianBlur">GaussianBlur</option>
-    <option value="StackBlur">StackBlur</option>
+    <option value="Box">Box</option>
+    <option id="Gaussian" style="display: none;" value="Gaussian">Gaussian</option>
+    <option value="Stack">StackBlur</option>
     <option value="BrightnessContrastGimp">BrightnessContrast(GIMP)</option>
     <option value="BrightnessContrastPhotoshop">BrightnessContrast(Photoshop)</option>
     <option value="Channels">Channels</option>
@@ -38,18 +38,24 @@
     <option value="HSLAdjustment">HSLAdjustment</option>
     <option value="Invert">Invert</option>
     <option value="Mosaic">Mosaic</option>
-    <option value="Oil">Oil</option>
+    <option id="Oil" style="display: none;" value="Oil">Oil</option>
     <option value="Posterize">Posterize</option>
     <option value="Rescale">Rescale</option>
     <option value="ResizeNearestNeighbor">Resize(NearestNeighbor)</option>
     <option value="Resize">Resize(Bilinear)</option>
     <option value="ResizeBuiltin">Resize(Builtin)</option>
-    <option value="Sepia">Sepia</option>
+    <option id="Sepia" style="display: none;"value="Sepia">Sepia</option>
     <option value="Sharpen">Sharpen</option>
     <option value="Solarize">Solarize</option>
     <option value="Transpose">Transpose</option>
     <option value="Twril">Twril</option>
     </select>
+      <button onclick="filteradd()">Añadir filtro</button>
+      <div id="divfilter" style="display: none;">
+        <input id="nombre" type="text" </input>
+        <textarea id="text"></textarea>
+        <button id="boton" onclick="add()">Añadir</button>
+      </div>
     </div>
     <!--/config-->
     <div id="main">
@@ -65,6 +71,7 @@
     <!--/wrapper-->
     </div>
     <!--/container-->
+    <canvas id=b></canvas>
     <script src="./js/jquery-1.6.min.js"></script>
     <script src="./js/DAT.GUI.js"></script>
     <script src="./js/imagefilters.js"></script>
@@ -772,12 +779,9 @@
       }, 20);
 
       // load default image
-      loadImage('rotator_s.jpg', function() {
-        initFilter(current_filter);
-      });
+
     });
     </script>
-    <canvas id=b></canvas>
     <script>
     var num = 0;
     var a = new fabric.Canvas('a');
@@ -950,6 +954,34 @@
       ctx2.clearRect(0, 0, c2.width, c2.height);
       var imgData = ctx1.getImageData(0, 0, width, height);
       ctx2.putImageData(imgData, 10, 10);
+      var url = c2.toDataURL();
+      loadImage(url, function() {
+        initFilter(current_filter);
+      });
+    }
+
+    function add() {
+      if ($("#nombre").val() == "Sepia" && $("#text").val() !== "") {
+        alert($("#text").val());
+        document.getElementById('Sepia').style.display = 'block'
+      }
+
+      if ($("#nombre").val() == "Gaussian" && $("#text").val() !== "1") {
+        document.getElementById('Gaussian').style.display = 'block'
+      }
+      if ($("#nombre").val() == "Oil" && $("#text").val() !== "1") {
+        document.getElementById('Oil').style.display = 'block'
+      }
+
+
+    }
+
+    function filteradd() {
+      if (document.getElementById('divfilter').style.display == 'block') {
+        document.getElementById('divfilter').style.display = 'none'
+      } else {
+        document.getElementById('divfilter').style.display = 'block'
+      };
     }
     </script>
   </body>
