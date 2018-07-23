@@ -1000,8 +1000,9 @@
         link.download = i + ".png";
         link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
         link.click();
+        var text = "{id:" + i + " parqueo" + i;
 
-        var href = "data:application/octet-stream," + encodeURIComponent(JSON.stringify(a));
+        var href = "data:application/octet-stream," + encodeURIComponent(text + JSON.stringify(a));
         var dlAnchorElem = document.getElementById('downloadAnchorElem');
         dlAnchorElem.setAttribute("href", href);
         dlAnchorElem.setAttribute("download", i + ".json");
