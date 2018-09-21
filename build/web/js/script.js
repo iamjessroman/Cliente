@@ -228,6 +228,7 @@ $(document).ready(function() {
  }
 
  function saveimages() {
+   var num = 9;
    for (var i = 0; i < num; i++) {
      var canvas = document.getElementById(i);
      var link = document.createElement('a');
