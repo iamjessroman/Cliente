@@ -1,36 +1,43 @@
 <html lang="en">
 
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="icon" href="./images/1600.png">
-        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet prefetch">
-        <title>Cliente</title>
-    </head>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="icon" href="./images/1600.png">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet prefetch">
+  <title>Cliente</title>
+</head>
 
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Cliente</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Cliente</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                </ul>
-            </div>
-        </nav>
-        <div class="col-md-11">
-            <div class="container text-center">
-                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" id="btna">Cortar</button>
-                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="saveimages();">Save</button>
-                <div class="canvas-container" style="width: 800px; height: 600px; position: relative; user-select: none;"><canvas id="a" class="lower-canvas" width="800" height="600" style="position: absolute; width: 800px; height: 600px; left: 0px; top: 0px; touch-action: none; user-select: none;"></canvas><canvas class="upper-canvas " width="800" height="600" style="position: absolute; width: 800px; height: 600px; left: 0px; top: 0px; touch-action: none; user-select: none; cursor: default;"></canvas></div>
-            </div>
-            <div id="config">
-                <h3>Filtros</h3>
-                <select id="filter_list" size="2">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+      </ul>
+    </div>
+  </nav>
+  <div class="col-md-11">
+    <div class="container text-center">
+    </div>
+    <div class="card" style="width: 50rem;">
+      <canvas id="a" width="800" height="600"></canvas>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" id="btna">Cortar</button>
+        </div>
+      </div>
+    </div>
+    <div id="config">
+      <h3>Filtros</h3>
+      <select id="filter_list" size="2">
                     <option value="Original">Original</option>
                     <option value="Binarize">Binarize</option>
                     <option value="Box">Box</option>
@@ -63,31 +70,31 @@
                     <option value="Transpose">Transpose</option>
                     <option value="Twril">Twril</option>
                 </select>
-                <button onclick="filteradd()">Añadir filtro</button>
-                <div id="divfilter" style="display: none;">
-                    <input id="nombre" type="text" <="" input="">
-                           <textarea id="text"></textarea>
-                    <button id="boton" onclick="add()">Añadir</button>
-                </div>
-                <h3>Output</h3>
-                <canvas id="output"></canvas>
-                <p id="timer"></p>
-                <canvas id="b"></canvas>
-                <button id="canvasImageSave" onclick="saveimages()">Save</button>
-            </div>
-        </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="./js/script.js"></script>
-        <script src="./js/Imagefilter.js"></script>
-        <script src="./js/fabric.min.js"></script>
-        <script src="./js/jquery-3.3.1.min.js"></script>
-        <script src="./js/DAT.GUI.js"></script>
-        <script src="./js/imagefilters.js"></script>
-        <script src="./js/jquery-1.6.min.js"></script>
-    </body>
+      <button onclick="filteradd()">Añadir filtro</button>
+      <div id="divfilter" style="display: none;">
+        <input id="nombre" type="text" <="" input="">
+        <textarea id="text"></textarea>
+        <button id="boton" onclick="add()">Añadir</button>
+      </div>
+      <h3>Output</h3>
+      <canvas id="output"></canvas>
+      <p id="timer"></p>
+      <canvas id="b"></canvas>
+      <button id="canvasImageSave" onclick="saveimages()">Save</button>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/Imagefilter.js"></script>
+  <script src="./js/fabric.min.js"></script>
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script src="./js/DAT.GUI.js"></script>
+  <script src="./js/imagefilters.js"></script>
+  <script src="./js/jquery-1.6.min.js"></script>
+</body>
 
 </html>
