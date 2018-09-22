@@ -6,7 +6,7 @@ $(document).ready(function() {
 
    // Canvas Fabric js
    var a = new fabric.Canvas('a');
-   fabric.util.loadImage("http://localhost:9090/Servidor/app/descarga/image", function(img) {
+   fabric.util.loadImage("http://node40936-jessicaroman.jl.serv.net.mx/Servidor/app/descarga/image", function(img) {
      image = new fabric.Image(img);
      image.selectable = false;
      a.setWidth(image.width);
@@ -22,7 +22,7 @@ $(document).ready(function() {
    // Fin Funciones en Botones
 
 
-   $.getJSON('http://localhost:9090/Servidor/app/descarga/json', function(data) {
+   $.getJSON('http://node40936-jessicaroman.jl.serv.net.mx/Servidor/app/descarga/json', function(data) {
      a.loadFromJSON(data, a.renderAll.bind(a), function(o, object) {
        if (o.type == 'rect') {
          var iDiv = document.createElement('div');
@@ -100,7 +100,7 @@ $(document).ready(function() {
    function draw() {
      var a = new fabric.Canvas('a');
      num = 0;
-     $.getJSON('http://localhost:9090/Servidor/app/descarga/json', function(data) {
+     $.getJSON('http://node40936-jessicaroman.jl.serv.net.mx/Servidor/app/descarga/json', function(data) {
        a.loadFromJSON(data, a.renderAll.bind(a), function(o, object) {
          if (o.type == 'rect') {
            cut(o.left, o.top, o.width, o.height, o.angle, num);
@@ -134,7 +134,7 @@ $(document).ready(function() {
      // load the image
      var img = new Image();
      img.onload = start;
-     img.src = "http://localhost:9090/Servidor/app/descarga/image";
+     img.src = "http://node40936-jessicaroman.jl.serv.net.mx/Servidor/app/descarga/image";
 
      function start() {
        // create 2 temporary canvases
