@@ -1,12 +1,19 @@
-$(document).ready(function() {
-   // Variables
-   var num = 0;
-   var image;
-   // Fin Variables
+ //Funcion al Cargar Web
 
-   // Canvas Fabric js
-   var a = new fabric.Canvas('a');
-   fabric.util.loadImage("http://node40936-jessicaroman.jl.serv.net.mx/Servidor/app/descarga/image", function(img) {
+ $(document).ready(function() {
+   $("#btnUpload").click(upload);
+   $("#btnCut").click(draw);
+ });
+
+ var num = 0;
+ var a = new fabric.Canvas('a');
+
+
+ //Funcion Cargar desde servicio Rest
+ function upload() {
+
+   var image;
+   fabric.util.loadImage("http://localhost:9090/Servidor/app/descarga/image", function(img) {
      image = new fabric.Image(img);
      image.selectable = false;
      a.setWidth(image.width);
@@ -15,14 +22,7 @@ $(document).ready(function() {
      a.centerObject(image);
      a.renderAll();
    });
-   // Fin Canvas Fabric js
-
-   // Funciones en Botones
-   $("#btna").click(draw);
-   // Fin Funciones en Botones
-
-
-   $.getJSON('http://node40936-jessicaroman.jl.serv.net.mx/Servidor/app/descarga/json', function(data) {
+   $.getJSON("http://localhost:9090/Servidor/app/descarga/json", function(data) {
      a.loadFromJSON(data, a.renderAll.bind(a), function(o, object) {
        if (o.type == 'rect') {
          var iDiv = document.createElement('div');
@@ -95,86 +95,82 @@ $(document).ready(function() {
        }
      });
    });
+ }
 
 
-   function draw() {
-     var a = new fabric.Canvas('a');
-     num = 0;
-     $.getJSON('http://node40936-jessicaroman.jl.serv.net.mx/Servidor/app/descarga/json', function(data) {
-       a.loadFromJSON(data, a.renderAll.bind(a), function(o, object) {
-         if (o.type == 'rect') {
-           cut(o.left, o.top, o.width, o.height, o.angle, num);
-           $("#" + num).attr("onclick", "copy(" + num + "," + o.width + "," + o.height + ")");
-           num += 1;
-           console.log(num);
-         }
-       });
+ function draw() {
+   num = 0;
+   $.getJSON('http://localhost:9090/Servidor/app/descarga/json', function(data) {
+     a.loadFromJSON(data, a.renderAll.bind(a), function(o, object) {
+       fabric.log(o);
+       if (o.type == 'rect') {
+         cut(o.left, o.top, o.width, o.height, o.angle, num);
+         $("#" + num).attr("onclick", "copy(" + num + "," + o.width + "," + o.height + ")");
+         num += 1;
+       }
      });
-
-     var elems = document.getElementsByClassName('tools-imgEditor');
-     for (var i = 0; i < elems.length; i += 1) {
-       elems[i].style.display = 'block';
-     }
-     var elems = document.getElementsByClassName('divcanvas');
-     for (var i = 0; i < elems.length; i += 1) {
-       elems[i].style.display = 'block';
-     }
+   });
+   var elems = document.getElementsByClassName('tools-imgEditor');
+   for (var i = 0; i < elems.length; i += 1) {
+     elems[i].style.display = 'block';
    }
-
-   function cut(X, Y, Width, Height, Angle, num) {
-     console.log(num);
-     var canvas = document.getElementById(num);
-     var ctx = canvas.getContext("2d");
-     // blue rect's info
-     var blueX = X;
-     var blueY = Y;
-     var blueWidth = Width;
-     var blueHeight = Height;
-     var blueAngle = Angle * Math.PI / 180;
-     // load the image
-     var img = new Image();
-     img.onload = start;
-     img.src = "http://node40936-jessicaroman.jl.serv.net.mx/Servidor/app/descarga/image";
-
-     function start() {
-       // create 2 temporary canvases
-       var canvas1 = document.createElement("canvas");
-       var ctx1 = canvas1.getContext("2d");
-       var canvas2 = document.createElement("canvas");
-       var ctx2 = canvas2.getContext("2d");
-       // get the boundingbox of the rotated blue box
-       var rectBB = getRotatedRectBB(blueX, blueY, blueWidth, blueHeight, blueAngle);
-       // clip the boundingbox of the rotated blue rect
-       // to a temporary canvas
-       canvas1.width = canvas2.width = rectBB.width;
-       canvas1.height = canvas2.height = rectBB.height;
-       ctx1.drawImage(img, rectBB.cx - rectBB.width / 2, rectBB.cy - rectBB.height / 2, rectBB.width, rectBB.height, 0, 0, rectBB.width, rectBB.height);
-       // unrotate the blue rect on the temporary canvas
-       ctx2.translate(canvas1.width / 2, canvas1.height / 2);
-       ctx2.rotate(-blueAngle);
-       ctx2.drawImage(canvas1, -canvas1.width / 2, -canvas1.height / 2);
-       // draw the blue rect to the display canvas
-       var offX = rectBB.width / 2 - blueWidth / 2;
-       var offY = rectBB.height / 2 - blueHeight / 2;
-       ctx.drawImage(canvas2, -offX, -offY);
-     } // end start
-     // Utility: get bounding box of rotated rectangle
-     function getRotatedRectBB(x, y, width, height, rAngle) {
-       var absCos = Math.abs(Math.cos(rAngle));
-       var absSin = Math.abs(Math.sin(rAngle));
-       var cx = x + width / 2 * Math.cos(rAngle) - height / 2 * Math.sin(rAngle);
-       var cy = y + width / 2 * Math.sin(rAngle) + height / 2 * Math.cos(rAngle);
-       var w = width * absCos + height * absSin;
-       var h = width * absSin + height * absCos;
-       return ({
-         cx: cx,
-         cy: cy,
-         width: w,
-         height: h
-       });
-     }
+   var elems = document.getElementsByClassName('divcanvas');
+   for (var i = 0; i < elems.length; i += 1) {
+     elems[i].style.display = 'block';
    }
- });
+ }
+
+ function cut(X, Y, Width, Height, Angle, num) {
+   var canvas = document.getElementById(num);
+   var ctx = canvas.getContext("2d");
+   // blue rect's info
+   var blueX = X;
+   var blueY = Y;
+   var blueWidth = Width;
+   var blueHeight = Height;
+   var blueAngle = Angle * Math.PI / 180;
+   // load the image
+   var img = new Image();
+   img.onload = start;
+   img.src = "http://localhost:9090/Servidor/app/descarga/image";
+
+   function start() {
+     // create 2 temporary canvases
+     var canvas1 = document.createElement("canvas");
+     var ctx1 = canvas1.getContext("2d");
+     var canvas2 = document.createElement("canvas");
+     var ctx2 = canvas2.getContext("2d");
+     // get the boundingbox of the rotated blue box
+     var rectBB = getRotatedRectBB(blueX, blueY, blueWidth, blueHeight, blueAngle);
+     // clip the boundingbox of the rotated blue rect to a temporary canvas
+     canvas1.width = canvas2.width = rectBB.width;
+     canvas1.height = canvas2.height = rectBB.height;
+     ctx1.drawImage(img, rectBB.cx - rectBB.width / 2, rectBB.cy - rectBB.height / 2, rectBB.width, rectBB.height, 0, 0, rectBB.width, rectBB.height);
+     // unrotate the blue rect on the temporary canvas
+     ctx2.translate(canvas1.width / 2, canvas1.height / 2);
+     ctx2.rotate(-blueAngle);
+     ctx2.drawImage(canvas1, -canvas1.width / 2, -canvas1.height / 2);
+     // draw the blue rect to the display canvas
+     var offX = rectBB.width / 2 - blueWidth / 2;
+     var offY = rectBB.height / 2 - blueHeight / 2;
+     ctx.drawImage(canvas2, -offX, -offY);
+   } // end start
+   // Utility: get bounding box of rotated rectangle
+   function getRotatedRectBB(x, y, width, height, rAngle) {
+     var absCos = Math.abs(Math.cos(rAngle));
+     var absSin = Math.abs(Math.sin(rAngle));
+     var cx = x + width / 2 * Math.cos(rAngle) - height / 2 * Math.sin(rAngle);
+     var cy = y + width / 2 * Math.sin(rAngle) + height / 2 * Math.cos(rAngle);
+     var w = width * absCos + height * absSin;
+     var h = width * absSin + height * absCos;
+     return ({
+       cx: cx,
+       cy: cy,
+       width: w,
+       height: h
+     });
+   }
+ }
 
  function copy(num, width, height) {
    var c1 = document.getElementById(num);
@@ -212,11 +208,7 @@ $(document).ready(function() {
  }
 
  function savecanvas() {
-   //   var canvas = document.getElementById("b");
-   //   var link = document.createElement('a');
-   //   link.download = "test.png";
-   //   link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
-   //   link.click();
+   //   var canvas = document.getElementById("b");   var link = document.createElement('a');   link.download = "test.png";   link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;   link.click();
    var c1 = document.getElementById("output");
    var c2 = document.getElementById(i);
    var ctx1 = c1.getContext("2d");
@@ -228,14 +220,14 @@ $(document).ready(function() {
  }
 
  function saveimages() {
-   var num = 9;
    for (var i = 0; i < num; i++) {
      var canvas = document.getElementById(i);
      var link = document.createElement('a');
+     console.log(canvas.toDataURL());
      link.download = i + ".png";
      link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
      link.click();
-     var text = "{id:" + i + " parqueo:" + i;
+     var text = "{id:" + i + " parqueo" + i;
      var href = "data:application/octet-stream," + encodeURIComponent(text + JSON.stringify(a));
      var dlAnchorElem = document.getElementById('downloadAnchorElem');
      dlAnchorElem.setAttribute("href", href);
