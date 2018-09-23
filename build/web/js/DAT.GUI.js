@@ -45,7 +45,7 @@ DAT.GUI = function(parameters) {
 
   var width = 280;
   if (parameters.width != undefined) {
-  	width = parameters.width;
+    width = parameters.width;
   }
 
   // Prevents checkForOverflow bug in which loaded gui appearance
@@ -128,9 +128,9 @@ DAT.GUI = function(parameters) {
     var dmx = pmx - mx;
 
     if (dmy > 0 &&
-        curControllerContainerHeight > controllerHeight) {
+      curControllerContainerHeight > controllerHeight) {
       var d = DAT.GUI.map(curControllerContainerHeight, controllerHeight,
-          controllerHeight + 100, 1, 0);
+        controllerHeight + 100, 1, 0);
       dmy *= d;
     }
 
@@ -188,10 +188,10 @@ DAT.GUI = function(parameters) {
       } else if (controllerContainer.children.length >= 1) {
 
         var singleControllerHeight = controllerContainer.children[0].
-            offsetHeight;
+        offsetHeight;
         clearTimeout(resizeTimeout);
         var target = Math.round(curControllerContainerHeight /
-            singleControllerHeight) * singleControllerHeight - 1;
+          singleControllerHeight) * singleControllerHeight - 1;
         resizeTo = target;
         if (resizeTo <= 0) {
           _this.close();
@@ -234,20 +234,20 @@ DAT.GUI = function(parameters) {
       _this.listen();
     }, this.autoListenIntervalTime);
   };
-/*
-  this.__defineSetter__('autoListen', function(v) {
-    autoListen = v;
-    if (!autoListen) {
-      clearInterval(listenInterval);
-    } else {
-      if (listening.length > 0) createListenInterval();
-    }
-  });
+  /*
+    this.__defineSetter__('autoListen', function(v) {
+      autoListen = v;
+      if (!autoListen) {
+        clearInterval(listenInterval);
+      } else {
+        if (listening.length > 0) createListenInterval();
+      }
+    });
 
-  this.__defineGetter__('autoListen', function(v) {
-    return autoListen;
-  });
-*/
+    this.__defineGetter__('autoListen', function(v) {
+      return autoListen;
+    });
+  */
   this.listenTo = function(controller) {
     // TODO: check for duplicates
     if (listening.length == 0) {
@@ -282,7 +282,7 @@ DAT.GUI = function(parameters) {
   var alreadyControlled = function(object, propertyName) {
     for (var i in controllers) {
       if (controllers[i].object == object &&
-          controllers[i].propertyName == propertyName) {
+        controllers[i].propertyName == propertyName) {
         return true;
       }
     }
@@ -323,7 +323,7 @@ DAT.GUI = function(parameters) {
     // Does this value exist? Is it accessible?
     if (value == undefined) {
       DAT.GUI.error(object + ' either has no property \'' + propertyName +
-          '\', or the property is inaccessible.');
+        '\', or the property is inaccessible.');
       return;
     }
 
@@ -356,7 +356,7 @@ DAT.GUI = function(parameters) {
 
     // Do we have a saved value for this controller?
     if (type != 'function' &&
-        DAT.GUI.saveIndex < DAT.GUI.savedValues.length) {
+      DAT.GUI.saveIndex < DAT.GUI.savedValues.length) {
       controllerObject.setValue(DAT.GUI.savedValues[DAT.GUI.saveIndex]);
       DAT.GUI.saveIndex++;
     }
@@ -380,7 +380,7 @@ DAT.GUI = function(parameters) {
 
         if (caller == window['onload']) {
           curControllerContainerHeight = resizeTo = openHeight =
-              controllerHeight;
+            controllerHeight;
           controllerContainer.style.height = curControllerContainerHeight + 'px';
         }
 
@@ -394,8 +394,8 @@ DAT.GUI = function(parameters) {
 
   this.clear = function() {
     for (var i = 0, l = controllers.length; i < l; i++) {
-        var controllerObject = controllers[i];
-        controllerContainer.removeChild(controllerObject.domElement);
+      var controllerObject = controllers[i];
+      controllerContainer.removeChild(controllerObject.domElement);
     }
 
     DAT.GUI.allControllers = [];
@@ -424,7 +424,7 @@ DAT.GUI = function(parameters) {
   this.reset = function() {
     // TODO ... Set all values back to their initials.
     for (var i = 0, length = DAT.GUI.allControllers.length; i < length; i++) {
-        DAT.GUI.allControllers[i].reset();
+      DAT.GUI.allControllers[i].reset();
     }
   }
 
@@ -463,16 +463,16 @@ DAT.GUI = function(parameters) {
   var beginResize = function() {
 
     curControllerContainerHeight = controllerContainer.offsetHeight;
-    curControllerContainerHeight += (resizeTo - curControllerContainerHeight)
-        * 0.6;
+    curControllerContainerHeight += (resizeTo - curControllerContainerHeight) *
+      0.6;
 
     if (Math.abs(curControllerContainerHeight - resizeTo) < 1) {
       curControllerContainerHeight = resizeTo;
     } else {
       resizeTimeout = setTimeout(beginResize, 1000 / 30);
     }
-    controllerContainer.style.height = Math.round(curControllerContainerHeight)
-        + 'px';
+    controllerContainer.style.height = Math.round(curControllerContainerHeight) +
+      'px';
     checkForOverflow();
 
   }
@@ -601,7 +601,8 @@ DAT.GUI.savedAppearanceVars = [];
 
 DAT.GUI.getSaveString = function() {
 
-  var vals = [], i;
+  var vals = [],
+    i;
 
   vals.push(DAT.GUI.allGuis.length);
   vals.push(document.body.scrollTop);
@@ -638,9 +639,10 @@ DAT.GUI.getSaveString = function() {
 
 DAT.GUI.getVarFromURL = function(v) {
 
-  var vars = [], hash;
+  var vars = [],
+    hash;
   var hashes = window.location.href.slice(
-      window.location.href.indexOf('?') + 1).split('&');
+    window.location.href.indexOf('?') + 1).split('&');
 
   for (var i = 0; i < hashes.length; i++) {
     hash = hashes[i].split('=');
@@ -656,10 +658,11 @@ DAT.GUI.getVarFromURL = function(v) {
 
 DAT.GUI.replaceGetVar = function(varName, val) {
 
-  var vars = [], hash;
+  var vars = [],
+    hash;
   var loc = window.location.href;
   var hashes = window.location.href.slice(
-      window.location.href.indexOf('?') + 1).split('&');
+    window.location.href.indexOf('?') + 1).split('&');
 
   for (var i = 0; i < hashes.length; i++) {
     hash = hashes[i].split('=');
@@ -704,8 +707,7 @@ DAT.GUI.makeUnselectable = function(elem) {
 
 DAT.GUI.makeSelectable = function(elem) {
   if (elem == undefined || elem.style == undefined) return;
-  elem.onselectstart = function() {
-  };
+  elem.onselectstart = function() {};
   elem.style.MozUserSelect = 'auto';
   elem.style.KhtmlUserSelect = 'auto';
   elem.unselectable = 'off';
@@ -721,7 +723,7 @@ DAT.GUI.map = function(v, i1, i2, o1, o2) {
   return o1 + (o2 - o1) * ((v - i1) / (i2 - i1));
 };
 
-DAT.GUI.constrain = function (v, o1, o2) {
+DAT.GUI.constrain = function(v, o1, o2) {
   if (v < o1) v = o1;
   else if (v > o2) v = o2;
   return v;
@@ -901,8 +903,7 @@ DAT.GUI.ControllerBoolean = function() {
     if (typeof val != "boolean") {
       try {
         val = eval(val);
-      } catch (e) {
-      }
+      } catch (e) {}
     }
     return DAT.GUI.Controller.prototype.setValue.call(this, val);
   };
@@ -957,14 +958,15 @@ DAT.GUI.ControllerNumber = function() {
   var draggingHorizontal = false;
   var draggingVertical = false;
 
-  var y = 0, py = 0;
+  var y = 0,
+    py = 0;
 
   var min = arguments[3];
   var max = arguments[4];
   var step = arguments[5];
 
   var defaultStep = function() {
-      step = (max - min) * 0.01;
+    step = (max - min) * 0.01;
   };
 
   this.min = function() {
@@ -1025,7 +1027,7 @@ DAT.GUI.ControllerNumber = function() {
   this.getStep = function() {
     if (step == undefined) {
       if (max != undefined && min != undefined) {
-        return (max-min)/100;
+        return (max - min) / 100;
       } else {
         return 1;
       }
@@ -1083,15 +1085,15 @@ DAT.GUI.ControllerNumber = function() {
   numberField.addEventListener('keydown', function(e) {
     var newVal;
     switch (e.keyCode) {
-      case 13:    // enter
+      case 13: // enter
         newVal = parseFloat(this.value);
         _this.setValue(newVal);
         break;
-      case 38:    // up
+      case 38: // up
         newVal = _this.getValue() + _this.getStep();
         _this.setValue(newVal);
         break;
-      case 40:    // down
+      case 40: // down
         newVal = _this.getValue() - _this.getStep();
         _this.setValue(newVal);
         break;
@@ -1204,9 +1206,9 @@ DAT.GUI.ControllerNumberSlider = function(numberController, min, max, step, init
     if (!clicked) return;
     var pos = findPos(_this.domElement);
     var val = DAT.GUI.map(e.pageX, pos[0], pos[0] + _this.domElement
-        .offsetWidth, numberController.getMin(), numberController.getMax());
+      .offsetWidth, numberController.getMin(), numberController.getMax());
     val = Math.round(val / numberController.getStep()) * numberController
-        .getStep();
+      .getStep();
     numberController.setValue(val);
   };
 
@@ -1223,25 +1225,26 @@ DAT.GUI.ControllerNumberSlider = function(numberController, min, max, step, init
     clicked = false;
     if (numberController.finishChangeFunction != null) {
       numberController.finishChangeFunction.call(this,
-          numberController.getValue());
+        numberController.getValue());
     }
     document.removeEventListener('mouseup', mouseup, false);
   };
 
   var findPos = function(obj) {
-    var curleft = 0, curtop = 0;
+    var curleft = 0,
+      curtop = 0;
     if (obj.offsetParent) {
       do {
         curleft += obj.offsetLeft;
         curtop += obj.offsetTop;
       } while ((obj = obj.offsetParent));
-      return [curleft,curtop];
+      return [curleft, curtop];
     }
   };
 
   this.setValue = function(e) {
     this.fg.style.width = DAT.GUI.map(e, numberController.getMin(),
-        numberController.getMax(), 0, 100) + "%";
+      numberController.getMax(), 0, 100) + "%";
   };
 
   document.addEventListener('mousemove', onDrag, false);
