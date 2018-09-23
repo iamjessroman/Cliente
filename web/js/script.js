@@ -25,10 +25,14 @@ function upload() {
   $.getJSON("http://localhost:9090/Servidor/app/descarga/json", function(data) {
     a.loadFromJSON(data, a.renderAll.bind(a), function(o, object) {
       if (o.type == 'rect') {
+
+
         var iDiv = document.createElement('div');
+        iDiv.id = 'tools' + num;
         iDiv.className = 'tools-imgEditor';
         iDiv.style.display = 'none';
-        document.getElementsByTagName('body')[0].appendChild(iDiv);
+        document.getElementById('Layer1').appendChild(iDiv);
+
         var ifalse = document.createElement("i");
         ifalse.setAttribute('aria-hidden', 'true');
         ifalse.setAttribute('class', 'fa fa-lg fa-refresh');
@@ -36,8 +40,7 @@ function upload() {
         ifalse.setAttribute('data-toggle', 'tooltip');
         ifalse.setAttribute('onclick', "clearCanvas()");
         ifalse.setAttribute('title', "Restaurar Imagem Original");
-        iDiv.appendChild(ifalse);
-        document.getElementsByTagName('body')[0].appendChild(iDiv);
+        document.getElementById('tools' + num).appendChild(ifalse);
         var ifalse = document.createElement("i");
         ifalse.setAttribute('aria-hidden', 'true');
         ifalse.setAttribute('class', 'fa fa-lg fa-times');
@@ -45,8 +48,7 @@ function upload() {
         ifalse.setAttribute('data-toggle', 'tooltip');
         ifalse.setAttribute('onclick', "removeObj()");
         ifalse.setAttribute('title', "Remover Objeto Selecionado");
-        iDiv.appendChild(ifalse);
-        document.getElementsByTagName('body')[0].appendChild(iDiv);
+        document.getElementById('tools' + num).appendChild(ifalse);
         var ifalse = document.createElement("i");
         ifalse.setAttribute('aria-hidden', 'true');
         ifalse.setAttribute('class', 'fa fa-lg fa-file-image-o');
@@ -54,8 +56,7 @@ function upload() {
         ifalse.setAttribute('data-toggle', 'tooltip');
         ifalse.setAttribute('onclick', "removeObj()");
         ifalse.setAttribute('title', "Remover Objeto Selecionado");
-        iDiv.appendChild(ifalse);
-        document.getElementsByTagName('body')[0].appendChild(iDiv);
+        document.getElementById('tools' + num).appendChild(ifalse);
         var ifalse = document.createElement("i");
         ifalse.setAttribute('aria-hidden', 'true');
         ifalse.setAttribute('class', 'fa fa-lg fa-square-o addElement');
@@ -63,7 +64,7 @@ function upload() {
         ifalse.setAttribute('data-toggle', 'tooltip');
         ifalse.setAttribute('onclick', "removeObj()");
         ifalse.setAttribute('title', "Remover Objeto Selecionado");
-        iDiv.appendChild(ifalse);
+        document.getElementById('tools' + num).appendChild(ifalse);
         var ifalse = document.createElement("i");
         ifalse.setAttribute('aria-hidden', 'true');
         ifalse.setAttribute('class', 'fa fa-lg fa-location-arrow addElement');
@@ -71,7 +72,7 @@ function upload() {
         ifalse.setAttribute('data-toggle', 'tooltip');
         ifalse.setAttribute('onclick', "removeObj()");
         ifalse.setAttribute('title', "Remover Objeto Selecionado");
-        iDiv.appendChild(ifalse);
+        document.getElementById('tools' + num).appendChild(ifalse);
         var ifalse = document.createElement("i");
         ifalse.setAttribute('aria-hidden', 'true');
         ifalse.setAttribute('class', 'fa fa-lg fa-crop');
@@ -79,13 +80,14 @@ function upload() {
         ifalse.setAttribute('data-toggle', 'tooltip');
         ifalse.setAttribute('onclick', "removeObj()");
         ifalse.setAttribute('title', "Remover Objeto Selecionado");
-        iDiv.appendChild(ifalse);
+        document.getElementById('tools' + num).appendChild(ifalse);
+
         var nDiv = document.createElement('div');
         nDiv.id = 'div' + num;
         nDiv.style.display = 'none';
         nDiv.className = 'divcanvas';
         nDiv.onclick = '';
-        document.getElementsByTagName('body')[0].appendChild(nDiv);
+        document.getElementById('Layer1').appendChild(nDiv);
         var canv = document.createElement("canvas");
         canv.setAttribute('width', 300);
         canv.setAttribute('height', 300);

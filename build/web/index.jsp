@@ -91,8 +91,7 @@
                           <p class="card-text"></p>
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <input id="nombre" type="text" placeholder="Nombre del filtro" class="form-control">
-                              </div>
+                              <input id="nombre" type="text" placeholder="Nombre del filtro" class="form-control"></div>
                               <button id="boton" class="btn btn-primary" onclick="add()">Añadir</button>
                             </div>
                             <textarea id="text" placeholder="Código" class="form-control"></textarea>
@@ -104,31 +103,29 @@
                       <h3></h3>
                       <h5>Output</h5>
                       <div class="input-group mb-3">
-                      <canvas id="output"></canvas>
-                      <canvas id="b"></canvas>
+                        <canvas id="output"></canvas>
+                        <canvas id="b"></canvas>
+                      </div>
+                      <button id="canvasImageSave" class="btn btn-primary" onclick="saveimages()">Save</button>
                     </div>
-                      <button id="canvasImageSave"  class="btn btn-primary" onclick="saveimages()">Save</button>
-          </div>
+                    <div class="col-md-7">
+                      <div id="Layer1" style="width: 800px; height: 400px; overflow: scroll;">
+                      </div>
+                    </div>
+                                <!-- Optional JavaScript -->
+                                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+                                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+                                <!-- <script src="./js/script.js"></script> <script src="./js/Imagefilter.js"></script> -->
+                                <script src="./js/fabric.min.js"></script>
+                                <script src="./js/jquery-3.3.1.min.js"></script>
+                                <script src="./js/DAT.GUI.js"></script>
+                                <script src="./js/imagefilters.js"></script>
+                                <script src="./js/jquery-1.6.min.js"></script>
+                                <script src="./js/Imagefilter.js"></script>
+                                <script src="./js/script.js"></script>
+                                <script></script>
+                              </body>
 
-
-
-
-
-
-                    <!-- Optional JavaScript -->
-                    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-                    <!-- <script src="./js/script.js"></script> <script src="./js/Imagefilter.js"></script> -->
-                    <script src="./js/fabric.min.js"></script>
-                    <script src="./js/jquery-3.3.1.min.js"></script>
-                    <script src="./js/DAT.GUI.js"></script>
-                    <script src="./js/imagefilters.js"></script>
-                    <script src="./js/jquery-1.6.min.js"></script>
-                    <script src="./js/Imagefilter.js"></script>
-                    <script src="./js/script.js"></script>
-                    <script></script>
-                  </body>
-
-                </html>
+                            </html>
