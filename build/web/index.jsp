@@ -121,7 +121,7 @@
                             <div class="modal-body">
             
 
-                                    <textarea id="code" class="form-control"></textarea>
+                                <textarea id="code" class="form-control"></textarea>
                          
                             </div>
                             <div class="modal-footer">

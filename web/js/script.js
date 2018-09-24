@@ -259,13 +259,14 @@ function saveJson() {
     for (var i = 0; i < num; i++) {
         var canvas = document.getElementById(i);
         var canvasContents = canvas.toDataURL(); // a data URL of the current canvas image
+
         if (i === 0) {
-            string = JSON.stringify(canvasContents+"\n");
+            string = canvasContents;
 
         } else {
-            string = string + JSON.stringify(data);
+            string = string + canvasContents;
         }
-   console.log(string);
+    
 
     }
     var uno = document.getElementById('code');
