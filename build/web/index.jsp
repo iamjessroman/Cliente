@@ -116,17 +116,36 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
+
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-            
+                                <form method="post" action="process.jsp">
+                                    First name:<br>
+                                    <input type="text" name="first_name">
+                                    <br>
+                                    Last name:<br>
+                                    <input type="text" name="last_name">
+                                    <br>
+                                    City name:<br>
+                                    <input type="text" name="city_name">
+                                    <br>
+                                    Email Id:<br>
+                                    <input type="email" name="email">
+                                    <br><br>
+                                    <input type="submit" value="submit">
+                                </form>
+                                <form method="post" id="formulario">
+                                    <textarea id="code" class="form-control"></textarea>
+                                    <input type="button"  class="btn btn-primary" id="btn-ingresar" value="Ingresar" />
 
-                                <textarea id="code" class="form-control"></textarea>
-                         
+                                </form>
+
                             </div>
                             <div class="modal-footer">
-                                               <!-- <button type="button" class="btn btn-default" id="cjson">Copiar</button>-->
+                                <!-- <button type="button" class="btn btn-default" id="cjson">Copiar</button>-->
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                             </div>
                         </div>
                     </div>

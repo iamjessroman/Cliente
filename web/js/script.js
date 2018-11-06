@@ -5,6 +5,18 @@ $(document).ready(function () {
     $("#btnCut").click(draw);
     $("#canvasJsonSave").click(saveJson);
     $("#cjson").click(copyJson);
+    $('#btn-ingresar').click(function(){
+        var url = "./js/guardaNombre.php";
+        $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#formulario").serialize(),
+           success: function(data)
+           {
+             $('#resp').html(data);
+           }
+       });
+    });
 });
 
 var num = 0;
@@ -15,7 +27,7 @@ var a = new fabric.Canvas('a');
 function upload() {
 
     var image;
-    fabric.util.loadImage("http://localhost:9090/Servidor/app/descarga/image", function (img) {
+    fabric.util.loadImage("http://localhost:8080/Servidor/app/descarga/image", function (img) {
         image = new fabric.Image(img);
         image.selectable = false;
         a.setWidth(image.width);
@@ -24,7 +36,7 @@ function upload() {
         a.centerObject(image);
         a.renderAll();
     });
-    $.getJSON("http://localhost:9090/Servidor/app/descarga/json", function (data) {
+    $.getJSON("http://localhost:8080/Servidor/app/descarga/json", function (data) {
         a.loadFromJSON(data, a.renderAll.bind(a), function (o, object) {
             if (o.type == 'rect') {
 
@@ -104,7 +116,7 @@ function upload() {
 
 function draw() {
     num = 0;
-    $.getJSON('http://localhost:9090/Servidor/app/descarga/json', function (data) {
+    $.getJSON('http://localhost:8080/Servidor/app/descarga/json', function (data) {
         a.loadFromJSON(data, a.renderAll.bind(a), function (o, object) {
             fabric.log(o);
             if (o.type == 'rect') {
@@ -136,7 +148,7 @@ function cut(X, Y, Width, Height, Angle, num) {
     // load the image
     var img = new Image();
     img.onload = start;
-    img.src = "http://localhost:9090/Servidor/app/descarga/image";
+    img.src = "http://localhost:8080/Servidor/app/descarga/image";
 
     function start() {
         // create 2 temporary canvases
@@ -227,7 +239,7 @@ function savecanvas() {
     var imgData = ctx1.getImageData(0, 0, 300, 300);
     ctx2.putImageData(imgData, 10, 10);
     i = num;
-    
+
     var c1 = document.getElementById("output");
     var c2 = document.getElementById("b");
     var ctx1 = c1.getContext("2d");
@@ -266,7 +278,7 @@ function saveJson() {
         } else {
             string = string + canvasContents;
         }
-    
+
 
     }
     var uno = document.getElementById('code');
