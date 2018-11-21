@@ -5,18 +5,6 @@ $(document).ready(function () {
     $("#btnCut").click(draw);
     $("#canvasJsonSave").click(saveJson);
     $("#cjson").click(copyJson);
-    $('#btn-ingresar').click(function(){
-        var url = "./js/guardaNombre.php";
-        $.ajax({
-           type: "POST",
-           url: url,
-           data: $("#formulario").serialize(),
-           success: function(data)
-           {
-             $('#resp').html(data);
-           }
-       });
-    });
 });
 
 var num = 0;
