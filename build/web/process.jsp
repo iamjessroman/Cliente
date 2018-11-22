@@ -12,7 +12,7 @@
 
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/data", "jessica", "1234");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://https://localhost/data", "jessica", "1234");
         Statement st = conn.createStatement();
 
         int i = st.executeUpdate("insert into images (`Parqueo`, `dataimage`) values(1,'" + first_name +"')");
