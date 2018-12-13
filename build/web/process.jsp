@@ -12,12 +12,13 @@
 
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://https://localhost/data", "jessica", "1234");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://166.62.78.1:3306/data", "jessicaroman", "12345");
         Statement st = conn.createStatement();
 
         int i = st.executeUpdate("insert into images (`Parqueo`, `dataimage`) values(1,'" + first_name +"')");
         out.println("Data is successfully inserted!");
     } catch (Exception e) {
+        out.println("NO!");
         System.out.print(e);
         e.printStackTrace();
     }
