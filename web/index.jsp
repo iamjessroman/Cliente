@@ -44,6 +44,7 @@
             </div>
         </div>
         <div class="col-md-7">
+<<<<<<< HEAD
             <%@ page import="java.io.*" 
                      import="com.ute.models.coordenates.Conexion"%>
 
@@ -59,6 +60,17 @@
                     FileReader fr = new FileReader(ruta);
                     BufferedReader br = new BufferedReader(fr);
 
+=======
+            <%@ page import="java.io.*" %>
+            <%!
+                public String[] ReadArray() throws FileNotFoundException {
+                    String ruta = "C:\\Users\\jessi\\Documents\\NetBeansProjects\\Cliente\\filters.txt";
+                    String[] filters = null;
+                    File archivo = new File(ruta);
+                    FileReader fr = new FileReader(ruta);
+                    BufferedReader br = new BufferedReader(fr);
+
+>>>>>>> 137ea75539c8244bd23e2867fa5eaad92dccd94f
                     try {
                         if (archivo.exists()) {
                             String linea;
@@ -85,20 +97,36 @@
 
                         <option selected="selected">
                             Seleccionar Filtro</option>
+<<<<<<< HEAD
                             <%                                try {
                                     String text[] = this.ReadArray();
                                     for (int i = 0; i < text.length; i++) {%> 
                         <option value = "<%= text[i]%>"><%= text[i]%></option>
+=======
+                            <%
+                                try {
+                                    String text[] = this.ReadArray();
+                                    for (int i = 0; i < text.length; i++) {%> 
+                                    <option value = "<%= text[i] %>"><%= text[i] %></option>
+>>>>>>> 137ea75539c8244bd23e2867fa5eaad92dccd94f
                         <% }
                             } catch (IOException ex) {
                             }
 
                         %> 
+<<<<<<< HEAD
 
                     </select>
 
                     <p class="card-text"></p>
 
+=======
+                        
+                    </select>
+
+                    <p class="card-text"></p>
+              
+>>>>>>> 137ea75539c8244bd23e2867fa5eaad92dccd94f
 
                 </div>
             </div>

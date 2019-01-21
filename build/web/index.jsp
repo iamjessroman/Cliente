@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="col-md-7">
-            <%@ page import="java.io.*" 
+            <%@ page import="java.io.*"
                      import="com.ute.models.coordenates.Conexion"%>
 
             <%
@@ -85,15 +85,16 @@
 
                         <option selected="selected">
                             Seleccionar Filtro</option>
-                            <%                                try {
+                            <%
+                                try {
                                     String text[] = this.ReadArray();
-                                    for (int i = 0; i < text.length; i++) {%> 
-                        <option value = "<%= text[i]%>"><%= text[i]%></option>
+                                    for (int i = 0; i < text.length; i++) {%>
+                                    <option value = "<%= text[i] %>"><%= text[i] %></option>
                         <% }
                             } catch (IOException ex) {
                             }
 
-                        %> 
+                        %>
 
                     </select>
 
