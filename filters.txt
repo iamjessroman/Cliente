@@ -1,0 +1,1 @@
+,,,,,Binarize,Box,Gaussian,StackBlur,BrightnBrightnessContrast(GIMP),BrightnessCoBrightnessContrast(Photoshop) Channels,ColorColorTransform,Desaturate,Dither,Edge,Emboss,Enrich,Flip,Gamma,GrayScale,HSLAdjustment,Invert,Mosaic,noOil,Posterize,Rescale,noneSepia,Sharpen,Solarize,Transpose,Twril,Prueba

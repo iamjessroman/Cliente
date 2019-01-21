@@ -10,6 +10,9 @@ $(document).ready(function () {
 var num = 0;
 var a = new fabric.Canvas('a');
 
+function reFresh() {
+location.reload(true)
+}
 
 //Funcion Cargar desde servicio Rest
 function upload() {
@@ -27,8 +30,6 @@ function upload() {
     $.getJSON("http://localhost:8080/Servidor/app/descarga/json", function (data) {
         a.loadFromJSON(data, a.renderAll.bind(a), function (o, object) {
             if (o.type == 'rect') {
-
-
                 var iDiv = document.createElement('div');
                 iDiv.id = 'tools' + num;
                 iDiv.className = 'tools-imgEditor';
@@ -91,8 +92,8 @@ function upload() {
                 nDiv.onclick = '';
                 document.getElementById('Layer1').appendChild(nDiv);
                 var canv = document.createElement("canvas");
-                canv.setAttribute('width', 300);
-                canv.setAttribute('height', 300);
+                canv.setAttribute('width', 500);
+                canv.setAttribute('height', 500);
                 canv.setAttribute('id', num);
                 nDiv.appendChild(canv);
                 num += 1;
@@ -107,8 +108,8 @@ function draw() {
     $.getJSON('http://localhost:8080/Servidor/app/descarga/json', function (data) {
         a.loadFromJSON(data, a.renderAll.bind(a), function (o, object) {
             fabric.log(o);
-            if (o.type == 'rect') {
-                cut(o.left, o.top, o.width, o.height, o.angle, num);
+            if (o.type === 'rect') {
+                cut(o.left, o.top, o.width+50, o.height+100,0, num);
                 $("#" + num).attr("onclick", "copy(" + num + "," + o.width + "," + o.height + ")");
                 num += 1;
             }

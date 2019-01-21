@@ -44,58 +44,62 @@
             </div>
         </div>
         <div class="col-md-7">
+            <%@ page import="java.io.*" 
+                     import="com.ute.models.coordenates.Conexion"%>
 
+            <%
+                Conexion cx = new Conexion();
+                cx.testMethod();
+            %>
+            <%!
+                public String[] ReadArray() throws FileNotFoundException {
+                    String ruta = "C:\\Users\\jessi\\Documents\\NetBeansProjects\\Cliente\\filters.txt";
+                    String[] filters = null;
+                    File archivo = new File(ruta);
+                    FileReader fr = new FileReader(ruta);
+                    BufferedReader br = new BufferedReader(fr);
+
+                    try {
+                        if (archivo.exists()) {
+                            String linea;
+                            while ((linea = br.readLine()) != null) {
+                                filters = linea.split(",");
+                            }
+
+                        } else {
+                            filters = null;
+                        }
+                        fr.close();
+                    } catch (IOException ex) {
+
+                    }
+                    return filters;
+                }
+
+            %>
             <div class="card">
                 <div class="card-body">
+
                     <h5 class="card-title">Filtros</h5>
                     <select class="custom-select" id="filter_list">
+
                         <option selected="selected">
                             Seleccionar Filtro</option>
-                        <option value="Original">Original</option>
-                        <option value="Binarize">Binarize</option>
-                        <option value="Box">Box</option>
-                        <option id="Gaussian" style="display: none;" value="Gaussian">Gaussian</option>
-                        <option value="Stack">StackBlur</option>
-                        <option value="BrightnessContrastGimp">BrightnessContrast(GIMP)</option>
-                        <option value="BrightnessContrastPhotoshop">BrightnessContrast(Photoshop)</option>
-                        <option value="Channels">Channels</option>
-                        <option value="ColorTransformFilter">ColorTransform</option>
-                        <option value="Desaturate">Desaturate</option>
-                        <option value="Dither">Dither</option>
-                        <option value="Edge">Edge</option>
-                        <option value="Emboss">Emboss</option>
-                        <option value="Enrich">Enrich</option>
-                        <option value="Flip">Flip</option>
-                        <option value="Gamma">Gamma</option>
-                        <option value="GrayScale">GrayScale</option>
-                        <option value="HSLAdjustment">HSLAdjustment</option>
-                        <option value="Invert">Invert</option>
-                        <option value="Mosaic">Mosaic</option>
-                        <option id="Oil" style="display: none;" value="Oil">Oil</option>
-                        <option value="Posterize">Posterize</option>
-                        <option value="Rescale">Rescale</option>
-                        <option value="ResizeNearestNeighbor">Resize(NearestNeighbor)</option>
-                        <option value="Resize">Resize(Bilinear)</option>
-                        <option value="ResizeBuiltin">Resize(Builtin)</option>
-                        <option id="Sepia" style="display: none;" value="Sepia">Sepia</option>
-                        <option value="Sharpen">Sharpen</option>
-                        <option value="Solarize">Solarize</option>
-                        <option value="Transpose">Transpose</option>
-                        <option value="Twril">Twril</option>
+                            <%                                try {
+                                    String text[] = this.ReadArray();
+                                    for (int i = 0; i < text.length; i++) {%> 
+                        <option value = "<%= text[i]%>"><%= text[i]%></option>
+                        <% }
+                            } catch (IOException ex) {
+                            }
+
+                        %> 
+
                     </select>
 
                     <p class="card-text"></p>
-                    <button type="button" class="btn btn-primary" onclick="filteradd()">Añadir filtro</button>
 
-                    <div id="divfilter" style="display: none;">
-                        <p class="card-text"></p>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <input id="nombre" type="text" placeholder="Nombre del filtro" class="form-control"></div>
-                            <button id="boton" class="btn btn-primary" onclick="add()">Añadir</button>
-                        </div>
-                        <textarea id="text" placeholder="Código" class="form-control"></textarea>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -106,6 +110,7 @@
                 <canvas id="output"></canvas>
                 <canvas id="b"></canvas>
             </div>
+            <button id="refresh" class="btn btn-primary" onclick="reFresh()">Refresh</button>
             <button id="canvasImageSave" class="btn btn-primary" onclick="savecanvas()">Save</button>
             <button id="canvasJsonSave" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save Json</button>
         </div>
@@ -123,7 +128,7 @@
                                 <form method="post" action="process.jsp">
                                     <textarea name="code" id="code" class="form-control"></textarea>
                                     <input type="submit" class="btn btn-primary" value="Save">
-                                  
+
 
                                 </form>
 
@@ -139,7 +144,7 @@
             </div>
         </div>
         <div class="col-md-7">
-            <div id="Layer1" style="width: 800px; height: 400px; overflow: scroll;"></div>
+            <div id="Layer1" style="width: 1920px; height: 1080px; overflow: scroll;"></div>
         </div>
 
 

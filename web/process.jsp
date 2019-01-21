@@ -14,13 +14,17 @@
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/data", "jessica", "1234");
         Statement st = conn.createStatement();
-
-        int i = st.executeUpdate("insert into images (`Parqueo`, `dataimage`) values(1,'" + first_name +"')");
-        out.println("Data is successfully inserted!");
+        String query = "delete from images";
+        PreparedStatement preparedStmt = conn.prepareStatement(query);
+        // execute the preparedstatement
+        preparedStmt.execute();
+        st.executeUpdate("insert into images (`Parqueo`, `dataimage`) values(1,'" + first_name + "')");
+        out.println("Parqueos Guardados!");
+        conn.close();
     } catch (Exception e) {
         System.out.print(e);
         e.printStackTrace();
     }
-    
+
 
 %>

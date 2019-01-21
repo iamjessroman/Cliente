@@ -666,7 +666,7 @@ $(function() {
     }
   });
   // init select list
-  // $("#filter_list").attr('size', $("#filter_list").children().size());
+   $("#filter_list").attr('size', $("#filter_list").children().size());
   var current_filter = $("#filter_list").val();
   if (!current_filter) {
     $('#filter_list option:eq(0)').attr('selected', 'selected');
