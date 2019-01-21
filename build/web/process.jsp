@@ -12,7 +12,7 @@
 
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/data", "jessica", "1234");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://166.62.78.1:3306/data", "jessicaroman", "12345");
         Statement st = conn.createStatement();
         String query = "delete from images";
         PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -22,6 +22,7 @@
         out.println("Parqueos Guardados!");
         conn.close();
     } catch (Exception e) {
+        out.println("NO!");
         System.out.print(e);
         e.printStackTrace();
     }
